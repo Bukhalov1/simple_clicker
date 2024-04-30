@@ -18,6 +18,7 @@
         btn.addEventListener('click', function() {
             if (window.Telegram.WebApp) {
                 const user = Telegram.WebApp.initDataUnsafe.user;
+                display.textContent = user.username;
                 if (user) {
                     fetch('http://localhost:3000/test', {
                         method: 'POST',
