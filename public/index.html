@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title>Clicker</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
     <link rel="stylesheet" href="./css/clicker.css">
@@ -16,7 +16,9 @@
     document.addEventListener('DOMContentLoaded', function() {
         if (window.Telegram.WebApp) {
             const user = Telegram.WebApp.initDataUnsafe.user;
-            profile.textContent = user.username;
+            if(user.username){profile.textContent = user.username;}
+            else{profile.textContent = `ID${user.id}`}
+            
             if (user) {
                 fetch('https://1362673-cj52870.tw1.ru/send-user-data', {
                     method: 'POST',
