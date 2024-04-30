@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: center;
     width: 100vw;
-    height: 90vh;
+    height: 95vh;
     background-color: #222;
     color:white
 }
@@ -20,7 +20,7 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 90vh;
+    min-height: 95vh;
     min-width: 100vw;
     justify-content: center;
 }

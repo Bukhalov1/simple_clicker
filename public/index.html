@@ -8,16 +8,36 @@
     <link rel="stylesheet" href="./css/clicker.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        document.getElementById('getInfoBtn').addEventListener('click', function() {
+        window.Telegram.WebApp.expand();
+    </script>    
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn = document.getElementById('sendDataBtn');
+        btn.addEventListener('click', function() {
             if (window.Telegram.WebApp) {
                 const user = Telegram.WebApp.initDataUnsafe.user;
                 if (user) {
-                    alert(`ID: ${user.id}, Имя: ${user.first_name}, Фамилия: ${user.last_name}, Username: @${user.username}`);
-                } else {
-                    alert('Данные пользователя не доступны');
+                    fetch('http://localhost:3000/test', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: user.id,
+                            firstName: user.first_name,
+                            lastName: user.last_name,
+                            username: user.username
+                        })
+                    })
+                    .then(response => response.text())
+                    .then(result => alert('Данные успешно отправлены'))
+                    .catch(error => console.error('Ошибка при отправке данных:', error));
                 }
             }
         });
+    });
     </script>
     
 </head>
@@ -25,6 +45,7 @@
     <div class="page">
         
         <header class="header">
+            <button id="sendDataBtn">Отправить данные на сервер</button>
             <div id="profile">Profile</div>
         </header>
 
