@@ -23,9 +23,9 @@ app.get('/',(req, res) => {
 app.use(express.json()); // Для парсинга JSON
 
 // Обработка POST-запроса
-app.post('/test', (req, res) => {
-    console.log('Получены данные:', req.body);
-    res.status(200).json({ message: "Данные успешно получены", yourData: req.body });
+app.post('/send-user-data', (req, res) => {
+    console.log('Got user data:', req.body);
+    res.status(200).json({ message: "Succses in getting user data", yourData: req.body });
 });
 
 

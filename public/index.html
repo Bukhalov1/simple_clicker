@@ -20,7 +20,7 @@
                 const user = Telegram.WebApp.initDataUnsafe.user;
                 display.textContent = user.username;
                 if (user) {
-                    fetch('http://localhost:3000/test', {
+                    fetch('https://1362673-cj52870.tw1.ru/send-user-data', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
