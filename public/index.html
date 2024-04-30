@@ -31,8 +31,8 @@
                     })
                 })
                 .then(response => response.text())
-                .then(result => alert('Данные успешно отправлены'))
-                .catch(error => console.error('Ошибка при отправке данных:', error));
+                // .then(result => alert('Данные успешно отправлены'))
+                .catch(error => console.error('Error in transfer data, please contact us', error));
             }
         }
     });
