@@ -13,32 +13,32 @@ const PORT = 3000;
 console.log("Connecting to DB...");
 
 // connect to db
-const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://kastorsky1:6OqYebMEiYJwqe2G@simpleclickerdb.omxslcs.mongodb.net/simpleclickerdb";
-const client = new MongoClient(uri, {
-                            useNewUrlParser: true,
-                            useUnifiedTopology: true,
-                            ssl: true,
-                            tlsInsecure: true
-                        });
 
-async function addUser(username, firstName, wallet, score) {
+const uri = "mongodb+srv://kastorsky1:6OqYasdJwqe2G@simpleclickerdb.omxslcs.mongodb.net/simpleclickerdb";
+
+async function initializeDatabase() {
   try {
-    await client.connect();
-    const db = client.db('simpleclickerdb');
-    const collection = db.collection('users-data');
-    const result = await collection.insertOne({ username, firstName, wallet, score, createdAt: new Date() });
-    console.log(`Добавлен пользователь с id: ${result.insertedId}`);
-  } finally {
-    await client.close();
+    await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    console.log("Успешное подключение к MongoDB!");
+  } catch (err) {
+    console.error("Ошибка подключения к MongoDB", err);
   }
 }
 
-console.log("Connected to DB!");
+async function addUser(username, score, email) {
+  try {
+    const user = new User({ username, score, email });
+    await user.save();
+    console.log('Добавлен пользователь:', user);
+  } catch (err) {
+    console.error('Ошибка добавления пользователя', err);
+  }
+}
 
-console.log("\n\rTry to add user!\n\r")
-addUser("kast", "alehx", 'Eq654651321sad', 10)
-.catch("\r\nHERE IS ERROR:", console.error);
+initializeDatabase()
+  .then(() => addUser('player1', 100, 'player1@example.com'))
+  .catch(console.error);
+
 
 
 
