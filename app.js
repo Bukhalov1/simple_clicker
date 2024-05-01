@@ -26,9 +26,9 @@ async function initializeDatabase() {
 }
 initializeDatabase()
 
-async function addUser(username, firstName, wallet, score) {
+async function addUser(id, username, firstName, wallet, score) {
   try {
-    const user = new User({ username, firstName, wallet, score });
+    const user = new User({ id, username, firstName, wallet, score });
     await user.save();
     console.log('Добавлен пользователь:', user);
   } catch (err) {
