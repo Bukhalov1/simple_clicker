@@ -8,14 +8,28 @@ const app = express();
 const PORT = 3000;
 
 
+
+//pass kastorsky1:6OqYebMEiYJwqe2G
+
 // connect to db
-mongoose.connect('mongodb://localhost:27017/gameDB', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB...'))
-  .catch(err => console.error('Could not connect to MongoDB...', err)
-);
+const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://kastorsky1:6OqYebMEiYJwqe2G@simpleclickerdb.omxslcs.mongodb.net/simpleclickerdb";
+const client = new MongoClient(uri);
 
+async function addUser(username, firstName, wallet, score) {
+  try {
+    await client.connect();
+    const db = client.db('simpleclickerdb');
+    const collection = db.collection('users-data');
+    const result = await collection.insertOne({ username, firstName, wallet, score, createdAt: new Date() });
+    console.log(`Добавлен пользователь с id: ${result.insertedId}`);
+  } finally {
+    await client.close();
+  }
+}
 
-  
+addUser("kas", "alex", 'Eq654651321sad', 0)
+.catch(console.error);
 
 // Middleware для логирования IP-адресов
 app.use((req, res, next) => {
@@ -50,7 +64,7 @@ app.post('/send-user-data', (req, res) => {
                             username: req.body.username, 
                             firstName: req.body.firstName, 
                             lastName: req.body.lastName, 
-                            score: 100 });
+                            score: 155 });
 
     newUser.save().then(() => console.log('User saved!'));
 });
