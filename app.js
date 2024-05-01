@@ -38,7 +38,8 @@ async function checkUserExistsById(userId) {
             return 1
         } else {
             console.log(`Пользователь с id ${userId} не найден`);
-            return 0
+            console.log('adding new player')
+            addUser(req.body.id, req.body.username, req.body.firstName, req.body.wallet, 0);  // req.body.score
         }
     } catch (err) {
         console.error('Ошибка проверки наличия пользователя:', err);
@@ -103,11 +104,11 @@ app.post('/send-user-data', (req, res) => {
     console.log("\r\n check:")
     console.log(checkUserExistsById(req.body.id))
 
-    if(checkUserExistsById(req.body.id) == 0){
-        // add new user to db
-        console.log('adding new player')
-        addUser(req.body.id, req.body.username, req.body.firstName, req.body.wallet, 0);  // req.body.score
-    }
+    // if(checkUserExistsById(req.body.id) == 0){
+    //     // add new user to db
+    //     console.log('adding new player')
+    //     addUser(req.body.id, req.body.username, req.body.firstName, req.body.wallet, 0);  // req.body.score
+    // }
 });
 
 // Обработка POST-запроса
