@@ -42,11 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     username: user.username,
                     firstName: user.first_name,
                     wallet: "EQ---",
-                    score: 100
+                    score: 0
                 })
             })
             .then(response => response.text())
-            // .then(result => alert('Данные успешно отправлены'))
             .catch(error => console.error('Error in transfer data, please contact us', error));
         }
     }
@@ -97,7 +96,23 @@ function start(){
         button.textContent = "Try again!";
         clearInterval(interval);
         clearTimeout(timeout);
+        send_new_score(clicks);
     }, TIMEOUT);
+}
+
+function send_new_score(clicks){
+    fetch('https://1362673-cj52870.tw1.ru/send-new-score', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: user.id,
+                    score: clicks
+                })
+            })
+            .then(response => response.text())
+            .catch(error => console.error('Error in transfer data, please contact us', error));
 }
 
 function formatTime(ms){
