@@ -26,6 +26,25 @@ async function initializeDatabase() {
 }
 initializeDatabase()
 
+// Функция для проверки наличия пользователя по id
+async function checkUserExistsById(userId) {
+    try {
+        // Поиск пользователя по id
+        const user = await User.findOne({ id: userId });
+
+        // Проверяем наличие пользователя
+        if (user) {
+            console.log(`Пользователь с id ${userId} найден:`, user);
+            return 1
+        } else {
+            console.log(`Пользователь с id ${userId} не найден`);
+            return 0
+        }
+    } catch (err) {
+        console.error('Ошибка проверки наличия пользователя:', err);
+    }
+}
+
 async function addUser(id, username, firstName, wallet, score) {
   try {
     const user = new User({ id, username, firstName, wallet, score });
@@ -60,21 +79,10 @@ app.post('/send-user-data', (req, res) => {
     console.log('Got user data:', req.body);
     res.status(200).json({ message: "Succses in getting user data", yourData: req.body });
 
-    // Использование модели User
-    // id: 397033764,
-    // firstName: 'Kastorsky',
-    // lastName: '',
-    // username: 'Kastorsky1'
-
-    // add to db
-    // const newUser = new User({ id: req.body.id, 
-    //                         username: req.body.username, 
-    //                         firstName: req.body.firstName, 
-    //                         wallet: req.body.lastName, 
-    //                         score: 155 });
-    addUser(req.body.id, req.body.username, req.body.firstName, req.body.wallet, req.body.score);
-
-    // newUser.save().then(() => console.log('User saved!'));
+    if(checkUserExistsById(req.body.id) == 0){
+        // add new user to db
+        addUser(req.body.id, req.body.username, req.body.firstName, req.body.wallet, 0);  // req.body.score
+    }
 });
 
 
