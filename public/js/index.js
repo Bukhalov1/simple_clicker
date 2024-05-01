@@ -16,8 +16,9 @@ info.onclick = () => {showPage("info");}
 retry.onclick = () => prepare_to_start();
 
 // game consts
-const TIMEOUT = 5000;
-
+const TIMEOUT = 2000;
+// Глобальные переменные для хранения данных пользователя
+let userId, userName, userFirstName, userWallet = 'EQ---';
 
 // start here
 prepare_to_start()
@@ -28,6 +29,12 @@ button.onclick = start;
 document.addEventListener('DOMContentLoaded', function() {
     if (window.Telegram.WebApp) {
         const user = Telegram.WebApp.initDataUnsafe.user;
+
+        // Сохраняем данные пользователя в глобальных переменных
+        userId = user.id;
+        userName = user.username || `ID${user.id}`;
+        userFirstName = user.first_name;
+
         if(user.username){profile.textContent = user.username;}
         else{profile.textContent = `ID${user.id}`}
         
@@ -38,9 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    id: user.id,
-                    username: user.username,
-                    firstName: user.first_name,
+                    id: userId,
+                    username: userName,
+                    firstName: userFirstName,
                     wallet: "EQ---",
                     score: 0
                 })
@@ -107,13 +114,13 @@ function send_new_score(clicks){
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    id: user.id,
+                    id: userId,
                     score: clicks
                 })
             })
             .then(response => response.text())
             .catch(error => console.error('Error in transfer data, please contact us', error));
-            console.log("data sent:", user.id, 'with', clicks);
+            console.log("data sent:", userId, 'with', clicks);
 }
 
 function formatTime(ms){
