@@ -14,7 +14,7 @@ console.log("Connecting to DB...");
 
 // connect to db
 
-const uri = "mongodb+srv://kastorsky1:6OqYasdJwqe2G@simpleclickerdb.omxslcs.mongodb.net/simpleclickerdb";
+const uri = "mongodb+srv://kastorsky1:6OqYebMEiYJwqe2G@simpleclickerdb.omxslcs.mongodb.net/simpleclickerdb";
 
 async function initializeDatabase() {
   try {
