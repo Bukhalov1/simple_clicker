@@ -132,7 +132,7 @@ function formatTime(ms){
 // leaderboard
 async function fetchSortedUsers() {
     try {
-      const response = await fetch('http://localhost:3000/users/sorted-by-score');
+      const response = await fetch('/users/sorted-by-score');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -152,7 +152,7 @@ async function fetchSortedUsers() {
     const userList = document.getElementById('leaderboard');
     users.forEach(user => {
       const listItem = document.createElement('div');
-      listItem.textContent = `1 - ${user.username}: ${user.score}`;
+      listItem.textContent = `${user.username}: ${user.score}`;
       userList.appendChild(listItem);
     });
   }
