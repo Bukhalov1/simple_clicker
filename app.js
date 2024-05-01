@@ -37,7 +37,7 @@ async function addUser(username, firstName, wallet, score) {
 console.log("Connected to DB!");
 
 
-addUser("kas", "alex", 'Eq654651321sad', 0)
+addUser("kast", "alehx", 'Eq654651321sad', 10)
 .catch(console.error);
 
 
@@ -72,13 +72,14 @@ app.post('/send-user-data', (req, res) => {
     // lastName: '',
     // username: 'Kastorsky1'
 
-    const newUser = new User({ id: req.body.id, 
-                            username: req.body.username, 
-                            firstName: req.body.firstName, 
-                            lastName: req.body.lastName, 
-                            score: 155 });
+    // add to db
+    // const newUser = new User({ id: req.body.id, 
+    //                         username: req.body.username, 
+    //                         firstName: req.body.firstName, 
+    //                         lastName: req.body.lastName, 
+    //                         score: 155 });
 
-    newUser.save().then(() => console.log('User saved!'));
+    // newUser.save().then(() => console.log('User saved!'));
 });
 
 
