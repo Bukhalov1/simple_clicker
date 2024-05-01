@@ -45,6 +45,26 @@ async function checkUserExistsById(userId) {
     }
 }
 
+// Обновление значения score у пользователя с конкретным id
+async function updateUserScore(userId, newScore) {
+    try {
+      // Опция `new: true` возвращает обновленный документ
+      const updatedUser = await User.findOneAndUpdate(
+        { id: userId },           // Условие поиска по id
+        { score: newScore },      // Обновляемое значение
+        { new: true }             // Опция для возврата обновленного документа
+      );
+      
+      if (updatedUser) {
+        console.log('Обновленный пользователь:', updatedUser);
+      } else {
+        console.log(`Пользователь с id ${userId} не найден.`);
+      }
+    } catch (err) {
+      console.error('Ошибка обновления пользователя:', err);
+    }
+  }
+
 async function addUser(id, username, firstName, wallet, score) {
   try {
     const user = new User({ id, username, firstName, wallet, score });
@@ -90,10 +110,9 @@ app.post('/send-new-score', (req, res) => {
     console.log('Got user data:', req.body);
     res.status(200).json({ message: "Succses in getting user data", yourData: req.body });
 
-    // if(checkUserExistsById(req.body.id) == 0){
-    //     // add new user to db
-    //     // addUser(req.body.id, req.body.username, req.body.firstName, req.body.wallet, 0);  // req.body.score
-    // }
+    if(checkUserExistsById(req.body.id)){
+        updateUserScore(req.body.id, req.body.score);
+    }
 });
 
 
