@@ -8,63 +8,43 @@
     <link rel="stylesheet" href="./css/clicker.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        window.Telegram.WebApp.expand();
+        window.Telegram.WebApp.expand(); // мини-апп на весь экран
     </script>    
-
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        if (window.Telegram.WebApp) {
-            const user = Telegram.WebApp.initDataUnsafe.user;
-            if(user.username){profile.textContent = user.username;}
-            else{profile.textContent = `ID${user.id}`}
-            
-            if (user) {
-                fetch('https://1362673-cj52870.tw1.ru/send-user-data', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id: user.id,
-                        firstName: user.first_name,
-                        lastName: user.last_name,
-                        username: user.username
-                    })
-                })
-                .then(response => response.text())
-                // .then(result => alert('Данные успешно отправлены'))
-                .catch(error => console.error('Error in transfer data, please contact us', error));
-            }
-        }
-    });
 
-    </script>
     
 </head>
 <body>
-    <div class="page">
+    <div class="container">
         
         <header class="header">
-            <div id="profile">Profile</div>
+            <div id="profile_btn">Profile</div>
         </header>
 
         <main>
-            <div id="display">Click as fast as you can</div>
+            <div id="game" class="pages">
+                <div id="display"></div>
 
-            <button id="button">Start</button>
+                <button id="button"></button>
 
-            <div id="counter"></div>
+                <div id="counter"></div>
+            </div>
 
+            <div id="leaderboard" class="pages hidden"></div>
+
+            <div id="info" class="pages hidden">The simple clicker provided by Kastorsky1</div>
+
+            <div id="profile" class="pages hidden"></div>
         </main>
-
+        
         <footer class="footer">
-            <div id="retry">Retry</div>
-            <div id="leaderboard">Leaderboard</div>
-            <div id="info">Info</div>
+            <div id="retry_btn">Retry</div>
+            <div id="leaderboard_btn">Leaderboard</div>
+            <div id="info_btn">Info</div>
         </footer>
 
-    <script src="./js/clicker.js"></script>
+    <script src="./js/index.js"></script>
+    <!-- <script src="./js/clicker.js"></script> -->
     </div>
 </body>
 </html>

@@ -16,7 +16,7 @@ body {
     color:white
 }
 
-.page {
+.container {
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -25,12 +25,29 @@ body {
     justify-content: center;
 }
 
+
+
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 60px;
+}
+
+#info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #display {
@@ -140,4 +157,8 @@ main {
     /* padding: 2px; */
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.hidden { 
+    display: none !important;
 }
