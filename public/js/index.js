@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({
                     id: user.id,
-                    firstName: user.first_name,
-                    lastName: user.last_name,
                     username: user.username,
+                    firstName: user.first_name,
+                    wallet: "EQ---",
                     score: 100
                 })
             })

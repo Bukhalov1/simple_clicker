@@ -24,6 +24,7 @@ async function initializeDatabase() {
     console.error("Ошибка подключения к MongoDB", err);
   }
 }
+initializeDatabase()
 
 async function addUser(username, firstName, wallet, score) {
   try {
@@ -34,15 +35,6 @@ async function addUser(username, firstName, wallet, score) {
     console.error('Ошибка добавления пользователя', err);
   }
 }
-
-initializeDatabase()
-
-//   .then(() => addUser('player1', 100, 'player1@example.com'))
-//   .catch(console.error);
-
-// username, firstName, wallet, score
-// addUser('kast', "alex", "EQaksdjl6sad46q", 0);
-
 
 
 // Middleware для логирования IP-адресов
@@ -78,9 +70,9 @@ app.post('/send-user-data', (req, res) => {
     // const newUser = new User({ id: req.body.id, 
     //                         username: req.body.username, 
     //                         firstName: req.body.firstName, 
-    //                         lastName: req.body.lastName, 
+    //                         wallet: req.body.lastName, 
     //                         score: 155 });
-    addUser('kast', "alex", "EQaksdjl6sad46q", 0);
+    addUser(req.body.id, req.body.username, req.body.firstName, req.body.wallet, req.body.score);
 
     // newUser.save().then(() => console.log('User saved!'));
 });
