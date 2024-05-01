@@ -62,13 +62,13 @@ async function updateUserScore(userId, newScore) {
     try {
         // Находим пользователя по id
 
-        conosle.log('\n\r',userId,'\n\r')
-        conosle.log('\n\r',newScore,'\n\r')
+        console.log('\n\r',userId,'\n\r')
+        console.log('\n\r',newScore,'\n\r')
 
         const user = await User.findOne({ id: userId });
         
-        conosle.log('\n\r',user,'\n\r')
-        conosle.log('\n\r',user.score,'\n\r')
+        console.log('\n\r',user,'\n\r')
+        console.log('\n\r',user.score,'\n\r')
 
         if (!user) {
             console.log(`Пользователь с id ${userId} не найден.`);
