@@ -27,19 +27,19 @@ async function initializeDatabase() {
 initializeDatabase()
 
 // Функция для проверки наличия пользователя по id
-async function checkUserExistsById(userId) {
+async function checkUserExistsById(body) {
     try {
         // Поиск пользователя по id
-        const user = await User.findOne({ id: userId });
+        const user = await User.findOne({ id: body.id });
 
         // Проверяем наличие пользователя
         if (user) {
-            console.log(`Пользователь с id ${userId} найден:`, user);
+            console.log(`Пользователь с id ${body.id} найден:`, user);
             return 1
         } else {
-            console.log(`Пользователь с id ${userId} не найден`);
+            console.log(`Пользователь с id ${body.id} не найден`);
             console.log('adding new player')
-            addUser(req.body.id, req.body.username, req.body.firstName, req.body.wallet, 0);  // req.body.score
+            addUser(body.id, body.username, body.firstName, body.wallet, 0);  // req.body.score
         }
     } catch (err) {
         console.error('Ошибка проверки наличия пользователя:', err);
@@ -101,8 +101,7 @@ app.post('/send-user-data', (req, res) => {
     console.log('Got user data:', req.body);
     res.status(200).json({ message: "Succses in getting user data", yourData: req.body });
 
-    console.log("\r\n check:")
-    console.log(checkUserExistsById(req.body.id))
+    checkUserExistsById(req.body)
 
     // if(checkUserExistsById(req.body.id) == 0){
     //     // add new user to db
