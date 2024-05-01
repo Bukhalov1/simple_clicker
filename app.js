@@ -41,7 +41,7 @@ initializeDatabase()
 //   .catch(console.error);
 
 // username, firstName, wallet, score
-addUser('kast', "alex", "EQaksdjl6sad46q", 0);
+// addUser('kast', "alex", "EQaksdjl6sad46q", 0);
 
 
 
@@ -80,6 +80,7 @@ app.post('/send-user-data', (req, res) => {
     //                         firstName: req.body.firstName, 
     //                         lastName: req.body.lastName, 
     //                         score: 155 });
+    addUser('kast', "alex", "EQaksdjl6sad46q", 0);
 
     // newUser.save().then(() => console.log('User saved!'));
 });
