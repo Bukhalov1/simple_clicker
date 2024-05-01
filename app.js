@@ -85,6 +85,18 @@ app.post('/send-user-data', (req, res) => {
     }
 });
 
+// Обработка POST-запроса
+app.post('/send-new-score', (req, res) => {
+    console.log('Got user data:', req.body);
+    res.status(200).json({ message: "Succses in getting user data", yourData: req.body });
+
+    console.log("got:", req.body)
+    // if(checkUserExistsById(req.body.id) == 0){
+    //     // add new user to db
+    //     // addUser(req.body.id, req.body.username, req.body.firstName, req.body.wallet, 0);  // req.body.score
+    // }
+});
+
 
 
 // Запуск сервера

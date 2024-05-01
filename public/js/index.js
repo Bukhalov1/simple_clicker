@@ -113,6 +113,7 @@ function send_new_score(clicks){
             })
             .then(response => response.text())
             .catch(error => console.error('Error in transfer data, please contact us', error));
+            console.log("data sent:", user.id, 'with', clicks);
 }
 
 function formatTime(ms){
