@@ -36,9 +36,9 @@ async function addUser(username, firstName, wallet, score) {
 
 console.log("Connected to DB!");
 
-
+console.log("\n\rTry to add user!\n\r")
 addUser("kast", "alehx", 'Eq654651321sad', 10)
-.catch(console.error);
+.catch("\r\nHERE IS ERROR:", console.error);
 
 
 
