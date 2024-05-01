@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Определение схемы 
 const userSchema = new mongoose.Schema({
-    username: { type: String, required: true },
+    id: { type: String, required: true },
     username: { type: String, required: false },
     firstName: { type: String, required: false },
     wallet: { type: String, required: false },
