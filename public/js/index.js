@@ -11,7 +11,7 @@ const counter = document.querySelector("#counter");
 // open func on click
 profile.onclick = () => {showPage("profile");}
 // retry.onclick = () => {showPage("game");}
-leaderboard.onclick = () => {showPage("leaderboard");}
+leaderboard.onclick = leaderboard_func; //() => {showPage("leaderboard");}
 info.onclick = () => {showPage("info");}
 retry.onclick = () => prepare_to_start();
 
@@ -125,4 +125,43 @@ function send_new_score(clicks){
 
 function formatTime(ms){
     return Number.parseFloat(ms / 1000).toFixed(2);
+}
+
+
+
+// leaderboard
+async function fetchSortedUsers() {
+    try {
+      const response = await fetch('http://localhost:3000/users/sorted-by-score');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const users = await response.json();
+      console.log('Отсортированные пользователи:', users);
+      
+      // Обработка данных (например, отображение в таблице)
+      displayUsers(users);
+  
+    } catch (error) {
+      console.error('Ошибка получения данных:', error);
+    }
+  }
+  
+  function displayUsers(users) {
+    // Здесь добавьте код для отображения данных на странице
+    const userList = document.getElementById('leaderboard');
+    users.forEach(user => {
+      const listItem = document.createElement('div');
+      listItem.textContent = `1 - ${user.username}: ${user.score}`;
+      userList.appendChild(listItem);
+    });
+  }
+  
+// Вызов функции для получения отсортированных пользователей
+// fetchSortedUsers();
+  
+
+function leaderboard_func(){
+    showPage("leaderboard");
+    fetchSortedUsers();
 }

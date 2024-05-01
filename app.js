@@ -65,6 +65,7 @@ async function updateUserScore(userId, newScore) {
     }
   }
 
+// Добавить пользовантеля
 async function addUser(id, username, firstName, wallet, score) {
   try {
     const user = new User({ id, username, firstName, wallet, score });
@@ -101,6 +102,7 @@ app.post('/send-user-data', (req, res) => {
 
     if(checkUserExistsById(req.body.id) == 0){
         // add new user to db
+        console.log('adding new player')
         addUser(req.body.id, req.body.username, req.body.firstName, req.body.wallet, 0);  // req.body.score
     }
 });
@@ -114,6 +116,20 @@ app.post('/send-new-score', (req, res) => {
         updateUserScore(req.body.id, req.body.score);
     }
 });
+
+// Эндпоинт для получения пользователей, отсортированных по количеству очков
+app.get('/users/sorted-by-score', async (req, res) => {
+    try {
+      // Сортировка пользователей по полю score в порядке убывания (-1)
+      const users = await User.find().sort({ score: -1 });
+      res.json(users);
+    } catch (err) {
+      console.error('Ошибка сортировки пользователей:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+
 
 
 

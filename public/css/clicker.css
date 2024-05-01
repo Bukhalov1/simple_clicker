@@ -35,6 +35,15 @@ main {
     padding-top: 60px;
 }
 
+#leaderboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 0.4rem;
+}
+
 #info {
     display: flex;
     flex-direction: column;
