@@ -16,7 +16,7 @@ info.onclick = () => {showPage("info");}
 retry.onclick = () => prepare_to_start();
 
 // game consts
-const TIMEOUT = 2000;
+const TIMEOUT = 5000;
 // Глобальные переменные для хранения данных пользователя
 let userId, userName, userFirstName, userWallet = 'EQ---';
 
@@ -150,6 +150,7 @@ async function fetchSortedUsers() {
   function displayUsers(users) {
     // Здесь добавьте код для отображения данных на странице
     const userList = document.getElementById('leaderboard');
+    userList.innerHTML = '';
     users.forEach(user => {
       const listItem = document.createElement('div');
       listItem.textContent = `${user.username}: ${user.score}`;
