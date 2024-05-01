@@ -25,9 +25,9 @@ async function initializeDatabase() {
   }
 }
 
-async function addUser(username, score, email) {
+async function addUser(username, firstName, wallet, score) {
   try {
-    const user = new User({ username, score, email });
+    const user = new User({ username, firstName, wallet, score });
     await user.save();
     console.log('Добавлен пользователь:', user);
   } catch (err) {
@@ -36,10 +36,12 @@ async function addUser(username, score, email) {
 }
 
 initializeDatabase()
-  .then(() => addUser('player1', 100, 'player1@example.com'))
-  .catch(console.error);
 
+//   .then(() => addUser('player1', 100, 'player1@example.com'))
+//   .catch(console.error);
 
+// username, firstName, wallet, score
+addUser('kast', "alex", "EQaksdjl6sad46q", 0);
 
 
 
