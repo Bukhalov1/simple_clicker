@@ -60,23 +60,28 @@ async function addUser(id, username, firstName, wallet, score) {
 // Обновление значения score у пользователя с конкретным id
 async function updateUserScore(userId, newScore) {
     try {
-      // Опция `new: true` возвращает обновленный документ
-      const updatedUser = await User.findOneAndUpdate(
-        { id: userId },           // Условие поиска по id
-        { score: newScore },      // Обновляемое значение
-        { new: true }             // Опция для возврата обновленного документа
-      );
-      
-      if (updatedUser) {
+      // Находим пользователя по id
+      const user = await User.findOne({ id: userId });
+  
+      if (!user) {
+        console.log(`Пользователь с id ${userId} не найден.`);
+        return;
+      }
+  
+      // Проверяем, больше ли новый счет текущего
+      if (newScore > user.score) {
+        // Обновляем значение score, если новое значение больше
+        user.score = newScore;
+        const updatedUser = await user.save(); // Сохраняем изменения
+  
         console.log('Обновленный пользователь:', updatedUser);
       } else {
-        console.log(`Пользователь с id ${userId} не найден.`);
+        console.log('Новый счет не больше текущего, обновление не выполнено.');
       }
     } catch (err) {
       console.error('Ошибка обновления пользователя:', err);
     }
   }
-
 
 
 
