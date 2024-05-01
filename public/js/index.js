@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         else{profile.textContent = `ID${user.id}`}
         
         if (user) {
-            fetch('https://1362673-cj52870.tw1.ru/send-user-data', {
+            fetch('https://webcrafters.ru/send-user-data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ function start(){
 }
 
 function send_new_score(clicks){
-    fetch('https://1362673-cj52870.tw1.ru/send-new-score', {
+    fetch('https://webcrafters.ru/send-new-score', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
