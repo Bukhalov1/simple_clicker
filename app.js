@@ -10,11 +10,17 @@ const PORT = 3000;
 
 
 //pass kastorsky1:6OqYebMEiYJwqe2G
+console.log("Connecting to DB...");
 
 // connect to db
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://kastorsky1:6OqYebMEiYJwqe2G@simpleclickerdb.omxslcs.mongodb.net/simpleclickerdb";
-const client = new MongoClient(uri);
+const client = new MongoClient(uri, {
+                            useNewUrlParser: true,
+                            useUnifiedTopology: true,
+                            ssl: true,
+                            tlsInsecure: true
+                        });
 
 async function addUser(username, firstName, wallet, score) {
   try {
@@ -28,8 +34,14 @@ async function addUser(username, firstName, wallet, score) {
   }
 }
 
+console.log("Connected to DB!");
+
+
 addUser("kas", "alex", 'Eq654651321sad', 0)
 .catch(console.error);
+
+
+
 
 // Middleware для логирования IP-адресов
 app.use((req, res, next) => {
