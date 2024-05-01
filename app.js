@@ -34,10 +34,10 @@ async function checkUserExistsById(body) {
 
         // Проверяем наличие пользователя
         if (user) {
-            console.log(`Пользователь с id ${body.id} найден:`, user);
+            console.log(`Пользователь с id <${body.id}> найден:`, user);
             return 1
         } else {
-            console.log(`Пользователь с id ${body.id} не найден`);
+            console.log(`Пользователь с id <${body.id}> не найден`);
             console.log('adding new player')
             addUser(body.id, body.username, body.firstName, body.wallet, 0);  // req.body.score
         }
@@ -45,6 +45,17 @@ async function checkUserExistsById(body) {
         console.error('Ошибка проверки наличия пользователя:', err);
     }
 }
+
+// Добавить пользовантеля
+async function addUser(id, username, firstName, wallet, score) {
+    try {
+      const user = new User({ id, username, firstName, wallet, score });
+      await user.save();
+      console.log('Добавлен пользователь:', user);
+    } catch (err) {
+      console.error('Ошибка добавления пользователя', err);
+    }
+  }
 
 // Обновление значения score у пользователя с конкретным id
 async function updateUserScore(userId, newScore) {
@@ -66,16 +77,7 @@ async function updateUserScore(userId, newScore) {
     }
   }
 
-// Добавить пользовантеля
-async function addUser(id, username, firstName, wallet, score) {
-  try {
-    const user = new User({ id, username, firstName, wallet, score });
-    await user.save();
-    console.log('Добавлен пользователь:', user);
-  } catch (err) {
-    console.error('Ошибка добавления пользователя', err);
-  }
-}
+
 
 
 // Middleware для логирования IP-адресов
@@ -101,13 +103,7 @@ app.post('/send-user-data', (req, res) => {
     console.log('Got user data:', req.body);
     res.status(200).json({ message: "Succses in getting user data", yourData: req.body });
 
-    checkUserExistsById(req.body)
-
-    // if(checkUserExistsById(req.body.id) == 0){
-    //     // add new user to db
-    //     console.log('adding new player')
-    //     addUser(req.body.id, req.body.username, req.body.firstName, req.body.wallet, 0);  // req.body.score
-    // }
+    checkUserExistsById(req.body);
 });
 
 // Обработка POST-запроса
@@ -115,7 +111,8 @@ app.post('/send-new-score', (req, res) => {
     console.log('Got user data:', req.body);
     res.status(200).json({ message: "Succses in getting user data", yourData: req.body });
 
-    if(checkUserExistsById(req.body.id)){
+    if(checkUserExistsById(req.body)){
+        console.log("\n\rUpdating score..")
         updateUserScore(req.body.id, req.body.score);
     }
 });
