@@ -8,12 +8,10 @@ const app = express();
 const PORT = 3000;
 
 
-
-//pass kastorsky1:6OqYebMEiYJwqe2G
 console.log("Connecting to DB...");
 
 // connect to db
-
+                    //pass kastorsky1:6OqYebMEiYJwqe2G
 const uri = "mongodb+srv://kastorsky1:6OqYebMEiYJwqe2G@simpleclickerdb.omxslcs.mongodb.net/simpleclickerdb";
 
 async function initializeDatabase() {
@@ -61,14 +59,7 @@ async function addUser(id, username, firstName, wallet, score) {
 async function updateUserScore(userId, newScore) {
     try {
         // Находим пользователя по id
-
-        console.log('\n\r',userId,'\n\r')
-        console.log('\n\r',newScore,'\n\r')
-
         const user = await User.findOne({ id: userId });
-        
-        console.log('\n\r',user,'\n\r')
-        console.log('\n\r',user.score,'\n\r')
 
         if (!user) {
             console.log(`Пользователь с id ${userId} не найден.`);

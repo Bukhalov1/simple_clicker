@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Clicker</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
+    <link rel="stylesheet" href="../public/css/clicker.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        window.Telegram.WebApp.expand(); // мини-апп на весь экран
+    </script>    
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script type="module" src="test.js"></script>
+
+    
+</head>
+<body>
+    <div class="container">
+        
+        <header class="header">
+            <div id="profile_btn">Profile</div>
+        </header>
+
+        <main>
+            <div id="game" class="pages hidden">
+                <div id="display"></div>
+
+                <button id="button"></button>
+
+                <div id="counter"></div>
+            </div>
+
+            <div id="leaderboard" class="pages hidden"></div>
+
+            <div id="info" class="pages hidden">The simple clicker provided by Kastorsky1</div>
+
+            <div id="profile" class="pages ">
+                <div>Your address:</div>
+                <div id="wallet-address"></div>
+                <button id="connect_button">Connect</button>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <div id="retry_btn">Retry</div>
+            <div id="leaderboard_btn">Leaderboard</div>
+            <div id="info_btn">Info</div>
+        </footer>
+
+    <!-- <script type="module" src="test.js"></script> -->
+    <!-- <script src="./js/clicker.js"></script> -->
+    </div>
+</body>
+</html>

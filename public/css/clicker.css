@@ -176,3 +176,54 @@ main {
 .hidden { 
     display: none !important;
 }
+
+#profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: top;
+    font-size: 0.4rem;
+    text-align: center;
+    line-height: 2em;
+}
+
+#connect_button {
+    --color: white;
+    --border-color: rgb(201, 201, 201);
+    --shadow-color: rgb(201, 201, 201);
+
+    border-radius: 1%;
+    position: relative;
+    font-size: .75rem;
+    width: 200px;
+    height: 60px;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 2rem;
+    border: none;
+    background-size: cover;
+    cursor: pointer;
+    outline: none;
+    color: rgb(0, 54, 172);
+    font-family: 'Press Start 2P', monospace;
+    font-weight: bold;
+    background-color: var(--color);
+    box-shadow: 0 -3px var(--color),
+                3px 0 var(--color),
+                0 3px var(--color),
+                -3px 0 var(--color),
+                0 -6px var(--border-color),
+                3px -3px var(--border-color),
+                6px 0 var(--border-color),
+                0 6px var(--border-color),
+                -3px 3px var(--border-color),
+                -6px 0 var(--border-color),
+                -3px -3px var(--border-color),
+                3px 3px var(--border-color),
+                0px 9px var(--shadow-color),
+                3px 6px var(--shadow-color),
+                6px 3px var(--shadow-color),
+                0px 9px var(--shadow-color),
+                -3px 6px var(--shadow-color),
+                -6px 3px var(--shadow-color);
+}
