@@ -134,7 +134,7 @@ app.get('/users/sorted-by-score', async (req, res) => {
 
 
   const tonConnectOptions = {
-    manifestUrl: 'https://your-website-url.com/manifest.json',  // Замените на ваш реальный URL манифеста
+    manifestUrl: 'https://webcrafters.com/manifest.json',  // Замените на ваш реальный URL манифеста
     walletSelection: {
         include: [
             'tonkeeper',
