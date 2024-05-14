@@ -34,7 +34,17 @@
 
             <div id="info" class="pages hidden">The simple clicker provided by Kastorsky1</div>
 
-            <div id="profile" class="pages hidden"></div>
+            <div id="profile" class="pages hidden">
+
+                <div id="app">
+                    <!-- Добавим кнопку -->
+                    <button id="connect-button">Connect to TON</button>
+                    <!-- Контейнер для TON Connect UI -->
+                    <div id="ton-connect-ui"></div>
+                </div>
+                <script src="../public/js/ton-connect.js" type="module"></script>
+
+            </div>
         </main>
         
         <footer class="footer">
@@ -44,6 +54,7 @@
         </footer>
 
     <script src="./js/index.js"></script>
+    <script src="./js/ton-connect.js"></script>
     <!-- <script src="./js/clicker.js"></script> -->
     </div>
 </body>

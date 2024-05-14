@@ -133,18 +133,21 @@ app.get('/users/sorted-by-score', async (req, res) => {
   });
 
 
-export const tonConnectOptions = {
-  manifestUrl: 'https://webcrafters.ru/tonconnect-manifest.json',  // Замените на ваш URL манифеста
-  walletSelection: {
-      include: [
-          'tonkeeper',
-          'tonhub',
-          'tonwallet',
-          // добавьте другие кошельки по мере необходимости
-      ]
-  }
+  const tonConnectOptions = {
+    manifestUrl: 'https://your-website-url.com/manifest.json',  // Замените на ваш реальный URL манифеста
+    walletSelection: {
+        include: [
+            'tonkeeper',
+            'tonhub',
+            'tonwallet',
+            // добавьте другие кошельки по мере необходимости
+        ]
+    }
 };
 
+module.exports = {
+    tonConnectOptions
+};
 
 
 

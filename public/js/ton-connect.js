@@ -1,5 +1,5 @@
-import { TonConnectUI } from '@tonconnect/ui';
-import { tonConnectOptions } from '..app.js';
+const { TonConnectUI } = require('@tonconnect/ui');
+const { tonConnectOptions } = require('../../app.js');
 
 document.addEventListener('DOMContentLoaded', () => {
     const connectButton = document.getElementById('connect-button');
