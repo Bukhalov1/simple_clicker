@@ -1,14 +1,7 @@
-console.log(11000);
-import { TonConnectUI } from '@tonconnect/ui';
-import { tonConnectOptions } from '../../app.js';
+// console.log(11000);
 
-document.addEventListener('DOMContentLoaded', () => {
-    const connectButton = document.getElementById('connect-button');
-    const tonConnectUIContainer = document.getElementById('ton-connect-ui');
-
-    connectButton.addEventListener('click', () => {
-        console.log(111);
-        const tonConnectUI = new TonConnectUI(tonConnectOptions);
-        tonConnectUI.render(tonConnectUIContainer);
-    });
-});
+// import TonConnectUI from '@tonconnect/ui';
+// const tonConnectUI = new TonConnectUI({ //connect application
+//     manifestUrl: 'https://<YOUR_APP_URL>/tonconnect-manifest.json',
+//     buttonRootId: '<YOUR_CONNECT_BUTTON_ANCHOR_ID>'
+// });

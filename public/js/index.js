@@ -160,6 +160,8 @@ async function fetchSortedUsers() {
   
 // Вызов функции для получения отсортированных пользователей
 // fetchSortedUsers();
+
+
   
 
 function leaderboard_func(){
