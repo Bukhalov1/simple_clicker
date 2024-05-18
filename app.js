@@ -133,6 +133,19 @@ app.get('/users/sorted-by-score', async (req, res) => {
   });
 
 
+// manifest
+// export const tonConnectOptions = {
+//   manifestUrl: 'https://webcrafters.ru/tonconnect-manifest.json', 
+//   walletSelection: {
+//       include: [
+//           'tonkeeper',
+//           'tonhub',
+//           'tonwallet',
+//           // добавьте другие кошельки по мере необходимости
+//       ]
+//   }
+// };
+
 
 // Запуск сервера
 app.listen(PORT, () => {
