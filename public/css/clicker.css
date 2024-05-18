@@ -22,7 +22,8 @@ body {
     flex-direction: column;
     min-height: 100vh;
     min-width: 100vw;
-    justify-content: center;
+    /* justify-content: center; */
+    justify-content: flex-start; /* Выравнивание по верху */
 }
 
 
@@ -177,6 +178,17 @@ main {
     display: none !important;
 }
 
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Обеспечивает выравнивание дочерних элементов по верху */
+    align-items: center; /* Центрирует дочерние элементы по горизонтали */
+    padding-bottom: 400px; /* Добавляет отступ сверху */
+    width: 100%;
+    text-align: center;
+}
+
+
 #profile{
     display: flex;
     flex-direction: column;
@@ -185,6 +197,10 @@ main {
     font-size: 0.4rem;
     text-align: center;
     line-height: 2em;
+
+    justify-content: flex-start; /* Выравнивание по верху */
+    align-items: center; /* Центрирует содержимое по горизонтали */
+    width: 100%;
 }
 
 #connect_button {
