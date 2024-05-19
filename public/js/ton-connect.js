@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(`Balance: ${balance} TON`);
             const balanceContainer = document.getElementById('ton-balance');
             balanceContainer.textContent = `${balance} TON`;
+            const yourinfo = document.getElementById('your-info');
+            yourinfo.classList.remove('hidden');
         }).catch(error => {
             console.error(error);
         });
