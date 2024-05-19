@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="./css/clicker.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+    <!-- <script src="/public/tonweb/dist/tonweb.js"></script> // ЕЩЁ ПРОБЛЕМА В ТОМ, ЧТО ВСЕ СТАТИЧЕСКИЕ ФАЙЛЫ ДОЛЖНЫ ЛЕЖАТЬ В PUBLIC--> 
+    <script src="/tonweb/dist/tonweb.js"></script>
     <script>
         window.Telegram.WebApp.expand(); // мини-апп на весь экран
     </script>    
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- <script src="https://telegram.org/js/telegram-web-app.js"></script> -->
 
 </head>
 <body>
@@ -38,6 +40,10 @@
                 <div id="app">
                     <!-- Контейнер для TON Connect UI -->
                     <div id="ton-connect-ui"></div>
+                    <div id="your-info">Your Balance: 
+                        <div id="ton-balance">
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

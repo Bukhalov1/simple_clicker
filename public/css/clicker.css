@@ -183,9 +183,24 @@ main {
     flex-direction: column;
     justify-content: flex-start; /* Обеспечивает выравнивание дочерних элементов по верху */
     align-items: center; /* Центрирует дочерние элементы по горизонтали */
-    padding-bottom: 400px; /* Добавляет отступ сверху */
+    padding-bottom: 300px; /* Добавляет отступ сверху */
     width: 100%;
     text-align: center;
+}
+
+#your-info{
+    padding-top: 15px;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+#ton-balance {
+    /* padding-top: 10px; */
+    width: 100%;
+    word-break: break-all; /* Обеспечивает разрыв слов */
+    white-space: normal; /* Устанавливает перенос строк */
+    justify-content: center; /* Выравнивание по верху */
+    align-items: center; /
 }
 
 
