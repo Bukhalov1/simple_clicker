@@ -1,6 +1,6 @@
 
 const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({                  // ТУТ БЫЛА ПРОБЛЕМА!!!!!
-    manifestUrl: 'https://webcrafters.ru/tonconnect-manifest.json',
+    manifestUrl: 'https://simpleclicker.webcrafters.ru/tonconnect-manifest.json',
     buttonRootId: 'ton-connect-ui'
 });
 
